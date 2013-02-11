@@ -1,0 +1,157 @@
+<html>
+
+<head>
+</head>
+
+<body>
+	
+
+<div class="container">
+
+	<div class="page-header">
+		<h2>What Will Be Your Space Jam?</h2>
+	</div>
+
+
+<!-- navbar -->
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<ul class="nav">
+			<li class="<%= 'active' if current_page?(diary_entries_path) %>"><%= link_to "Home", diary_entries_path %></li>
+			<li class="<%= 'active' if current_page?(new_diary_entry_path) %>"><%= link_to "New Entry", new_diary_entry_path %></li>
+		</ul>
+	</div>
+</div>
+
+
+<!-- Carousel -->
+<div id="#homepagecarousel" class="carousel slide">
+<!-- Carousel Items -->		
+  <div class="carousel-inner">
+    <div class="active item">
+      <img src="app/assets/images/springblooms.png" alt="" />
+      	<div class="carousel-caption">
+        	<p>Pretty Spring Flowers</p>
+      	</div>
+    </div>
+  <div class="item">
+    <img src="app/assets/images/frostedsummer.png" alt="" />
+      <div class="carousel-caption">
+        <p>Who Wants a Popsicle?</p>
+      </div>
+  </div>
+
+    <a class="carousel-control left" href="#homepagecarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#homepagecarousel" data-slide="next">&rsaquo;</a>
+</div>
+
+
+<!-- fluid grid -->
+<div class="row-fluid">
+	<div class="span6">
+		<p>New tab</p>
+	</div>
+	<div class="span6">
+		<p>New tab2</p>
+	</div>
+</div>
+
+
+<!-- create and populate the table with all diary entries -->
+<table class="table table-condensed table-hover">
+	<th>#</th>
+	<th>Title</th>
+	<th>Description</th>
+	<th>Mood</th>
+	<% @diary_entries.each do |d| %>
+		<tr>
+			<td><%= d.id %></td>
+			<td><%= d.title %></td>
+			<td><%= d.description %></td>
+			<td><%= d.mood %></td>
+		</tr>
+	<% end %>
+</table>
+
+
+</div>
+
+
+<!-- Carousel JavaScript & jQuery Plugins -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+<script src="assets/js/application.js"></script>
+<script src="assets/js/bootstrap-carousel.js"></script>
+<script src="assets/js/bootstrap-transition.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$('.carousel').carousel();
+			interval: 3000
+	})
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- old code, look to delete -->
+
+<!--
+<p>
+	<button class="btn btn-primary btn-small" type="button">
+		<%= link_to 'New Diary Entry', new_diary_entry_path %>
+	</button>	
+</p>-->
+
+
+
+<!-- <p>There are <%= @diary_entries.length %> diary entries.</p>
+
+<%= @diary_entries_positive.length %><p> " diary entry has a happy mood!"</p>
+
+<br/><br/>
+
+<%= "The title of each diary entry: "%>
+<br/>
+<% @diary_entries.each do |d| %>
+	<%=d.id%><%=".  "%><%= d.title %>
+	<br/>
+<% end %>
+
+
+<br/><br/>
+
+<%= "The description of each diary entry: "%>
+<br/>
+<% @diary_entries.each do |d| %>
+	<%=d.id%><%=".  "%><%= d.description %>
+	<br/>
+<% end %>
+<br/><br/>
+
+
+<% @diary_entries.each do |d| %>
+	<% if d.happy? %>
+	<div style='color: green' ><%= d.mood %></div>
+	<% else %>
+	<div><%= d.mood %></div>
+	<% end %>
+	<br/>
+<% end %> -->
+
+
+

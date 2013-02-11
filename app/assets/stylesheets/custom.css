@@ -1,0 +1,23 @@
+
+/**************** page header ************/
+
+.page-header {
+	text-align: center;
+	background-color: ;
+	padding-top: 20px;
+	color: #b4a7eb;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 300;
+}
+
+
+
+/**************** table **************/
+
+.table {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.table th {
+	color: #668c14;
+}

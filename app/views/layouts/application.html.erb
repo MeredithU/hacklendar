@@ -1,5 +1,19 @@
 <!DOCTYPE html>
 <html>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link src="assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+<!-- Google Web Fonts - Header -->
+<link href='http://fonts.googleapis.com/css?family=Quicksand:300,400' rel='stylesheet' type='text/css'>
+
+<!-- Google Web Fonts - Table Body -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+
+<!-- Google Web Fonts - Table Headers -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+
+
 <head>
   <title>Hacklendar</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -9,6 +23,10 @@
 <body>
 
 <%= yield %>
+
+<script src="app/assets/js/application.js"></script>
+<script src="app/assets/js/bootstrap-carousel.js"></script>
+<script src="app/assets/js/bootstrap-transition.js"></script>
 
 </body>
 </html>
