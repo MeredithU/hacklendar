@@ -1,0 +1,7 @@
+<h1>Editing Diary Entry</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', diary_entry %>
+<%= link_to 'Edit', edit_diary_entry_path(diary_entry) %>
+<%= link_to 'Delete', @diary_entry, method :delete, data: {confirm: 'Are you sure?' } %>
