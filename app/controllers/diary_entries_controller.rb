@@ -1,10 +1,33 @@
 class DiaryEntriesController < ApplicationController
 
 	def index
-		@diary_entries = DiaryEntry.all
+		# @diary_entries = DiaryEntry.all
 
-		@diary_entries_positive = DiaryEntry.positive("Happy")
+		# @day = '2013-02-01'.to_date
+
+		if params[:day]
+			@day = params[:day].to_date
+		else
+			@day = Date.today
+		end
+
+		@diary_entries = DiaryEntry.where(created_at: @day.beginning_of_day..@day.end_of_day)
+
+		@diary_entries_month = DiaryEntry.where(created_at: @day.beginning_of_month..@day.end_of_month)
+
+		@diary_entry_check = @diary_entries_month.map do |i|
+
+			{
+				date: i.created_at.to_date,
+				mood: i.mood
+			}
+
+		end
+
+
+		# @diary_entries_positive = DiaryEntry.positive('happy')
 	end
+	
 
 	def new
 		@diary_entry = DiaryEntry.new

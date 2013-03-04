@@ -12,3 +12,126 @@
  *= require_tree .
  */
 
+
+
+/**************** styling ************/
+
+h3 {
+	text-align: center;
+}
+
+
+.span7 h2 {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 300;
+	text-align: center;
+}
+
+
+
+
+/**************** page header ************/
+
+.page-header {
+	text-align: center;
+	padding-top: 20px;
+	color: #b4a7eb;
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 300;
+}
+
+
+/**************** body ************/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	padding-top: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+/**************** calendar table **************/
+
+.table {
+	font-family: 'Open Sans', sans-serif;
+	box-shadow: 4px 4px 5px #888;
+	border: 0.2px solid #e8e8e8;
+
+}
+
+.table th {
+	color: #668c14;
+}
+
+.table td.dayoftheweek{
+	text-align: center;
+	height: 20px;
+	width: 30px;
+}
+
+.table td.day{
+	text-align: right;
+	height: 60px;
+	width: 30px;
+}
+
+.table-hover td.day:hover {
+	background-color: #ffc9e2;
+}
+
+
+.calendar-heading a {
+	font-size: 450%;
+	text-align: center;
+}
+
+
+/**************** new entry button ************/
+
+.btn-primary {
+	background-color: #ffedfb;
+}
+
+
+/**************** daily schedule ************/
+
+.span3 .hero-unit {
+	font-family: 'Open Sans', sans-serif;
+	padding: 20px;
+	margin-top: 60px;
+	height: 250px;
+	width: 75%;
+	background-color: #a7ebb8;
+	/*background-color: #c2f2c2;*/
+}
+
+
+.span3 .hero-unit h3 {
+	text-align: left;
+	font-size: 95%;
+}
+
+.span3 .hero-unit p {
+	font-size: 90%;
+}
+
+
+/**************** carousel ************/
+/**
+.carousel .item {
+	height: 400px;
+}
+
+.carousel .img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	min-width: 100%;
+	width: auto;
+	height: 500px;
+}
+**/
+
+
+

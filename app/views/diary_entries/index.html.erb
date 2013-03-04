@@ -1,19 +1,106 @@
 <html>
 
 <head>
+
 </head>
 
 <body>
+
+
+
+<div class="row-fluid">
+
+  <div class="span7 offset1">
+
+    <%= render "calendar" %>
   
+  </div>
+
+  <div class="span3"> 
+    <!-- create and populate the table with all diary entries -->
+    <div class="hero-unit">
+      <% @diary_entries.each do |d| %>
+
+        <p><h3><%= d.created_at.strftime("%B %d, %Y") %></h3></p>
+
+        <% if (!d.created_at.blank?) %>
+          <p><%= d.title %></p>
+          <p><%= d.description %></p>
+        <% else %>  
+            <p>Sorry! You didn't put in an entry for today.<p>
+        <% end %>
+      <% end %>
+    </div>
+
+  <p>
+  
+    <button class="btn btn-primary" type="button">New Entry<% link_to new_diary_entry_path %></button>
+
+  </p>
+
+  </div>
+
+</div>  
 
 
 
-  <!--<div class="page-header">
-    <h2>Diary Entries</h2>
-  </div>-->
+
+
+
+
+
+
+
+
+
+<!-- Old Code -->
+
+<!-- calculating the current and longest consecutive entries -->
+
+<!-- array of entry dates -->
+<!--
+<% entry_dates = @diary_entry_check.map { |d| d[:date] } %>
+<% streak_counts = [] %>
+<% count = 0 %>
+
+<% (@day.beginning_of_month..@day.end_of_month).each do |day| %>
+  
+  <% if entry_dates.include?(day) %>
+    <% count += 1 %>
+  <% else %>
+    <% streak_counts << count %>
+    <% count = 0 %>
+  <% end %>
+
+<% end %>-->
+
+<!--<%= streak_counts.max %>-->
+
+
+<!-- fluid grid -->
+<!--
+  <div class="row-fluid">
+
+    <div class="span4">
+      <h2>Title One</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
+    </div>
+
+    <div class="span4">
+      <h2>Title Two</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
+    </div>
+
+    <div class="span4">
+      <h2>Title Three</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
+    </div>    
+  </div> -->
+
 
 
 <!-- navbar -->
+<!--
 <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <ul class="nav">
@@ -23,142 +110,69 @@
       <li class="<%= 'active' if current_page?(new_diary_entry_path) %>"><%= link_to "New Entry", new_diary_entry_path %></li>
     </ul>
   </div>
-</div>
+</div>-->
 
-<div>
-  <p></p>
-  <p></p>
-  <p></p>
+
+
+<!--
+<ul class="pager">
+      <li><%= link_to "Previous Month", diary_entries_path(day: @day - 1.month) %></li>
+      <li><%= link_to "Next Month", diary_entries_path(day: @day + 1.month) %></li>
+</ul>
+-->
+
+<!--
+<%= link_to "Previous Day", diary_entries_path(day: @day - 1.day) %>
+<%= link_to "Next Day", diary_entries_path(day: @day + 1.day) %>
+-->
+
   <!-- Carousel -->
-  <div id="#homepagecarousel" class="carousel slide">
-  <!-- Carousel Items -->   
-    <div class="carousel-inner">
+  <!--<div id="#homepagecarousel" class="carousel slide">-->
+  <!-- Carousel Items --> 
+    <!--<div class="carousel-inner">
       <div class="active item">
-        <%= image_tag 'springblooms.png' %>
+        <%= image_tag 'wallpaper1919x772' %>
         <div class="carousel-caption">
-          <p>Spring Flowers</p>
+          <p>Spring Reading</p>
         </div>
       </div>
 
       <div class="item">
-        <%= image_tag 'frostedsummer.png' %>
+        <%= image_tag 'ourintention1919x760.png' %>
         <div class="carousel-caption">
-          <p>Summertime</p>
+          <p>Your Reality</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <%= image_tag 'frostedsummer600x477.png' %>
+        <div class="carousel-caption">
+          <p>Summertime Replay</p>
         </div>
       </div>
 
       <a class="carousel-control left" href="#homepagecarousel" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#homepagecarousel" data-slide="next">&rsaquo;</a>
-  </div>
-</div>
-
-
-<!-- fluid grid -->
-<div class="row-fluid">
-  <div class="span6">
-    <p>New tab</p>
-    <p>New tab</p>
-    <p>New tab</p>
-    <p>New tab</p>
-  </div>
-  <div class="span6">
-    <p>New tab2</p>
-    <p>New tab2</p>
-    <p>New tab2</p>
-    <p>New tab2</p>
-  </div>
-</div>
-
-<div class="container">
-  <!-- create and populate the table with all diary entries -->
-  <table class="table table-condensed table-hover">
-    <th>#</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Mood</th>
-    <% @diary_entries.each do |d| %>
-      <tr>
-        <td><%= d.id %></td>
-        <td><%= d.title %></td>
-        <td><%= d.description %></td>
-        <td><%= d.mood %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
+  </div>-->
 
 
 
 <!-- Carousel JavaScript & jQuery Plugins -->
 
+
 <%= javascript_include_tag "application" %>
 
 <script>
   $(document).ready(function(){
-    $('.carousel').carousel({ interval: 3000 });
+    $('.carousel').carousel({ });
   })
 </script>
-
 
 
 </body>
 </html>
 
 
-
-
-
-
-
-
-
-
-
-
-<!-- old code, look to delete -->
-
-<!--
-<p>
-  <button class="btn btn-primary btn-small" type="button">
-    <%= link_to 'New Diary Entry', new_diary_entry_path %>
-  </button> 
-</p>-->
-
-
-
-<!-- <p>There are <%= @diary_entries.length %> diary entries.</p>
-
-<%= @diary_entries_positive.length %><p> " diary entry has a happy mood!"</p>
-
-<br/><br/>
-
-<%= "The title of each diary entry: "%>
-<br/>
-<% @diary_entries.each do |d| %>
-  <%=d.id%><%=".  "%><%= d.title %>
-  <br/>
-<% end %>
-
-
-<br/><br/>
-
-<%= "The description of each diary entry: "%>
-<br/>
-<% @diary_entries.each do |d| %>
-  <%=d.id%><%=".  "%><%= d.description %>
-  <br/>
-<% end %>
-<br/><br/>
-
-
-<% @diary_entries.each do |d| %>
-  <% if d.happy? %>
-  <div style='color: green' ><%= d.mood %></div>
-  <% else %>
-  <div><%= d.mood %></div>
-  <% end %>
-  <br/>
-<% end %> -->
 
 
 

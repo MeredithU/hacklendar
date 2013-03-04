@@ -1,0 +1,62 @@
+
+<h2><%=@day.strftime("%B %Y") %></h2>
+
+<table class="table table-condensed table-hover" border = 1 cellspacing = 30 cellpaddding = 20 >
+
+	<div class="calendar-heading">
+		<tr>
+			
+		</tr>
+	</div>
+
+	<tr> 
+		<td class="dayoftheweek">S</td>
+		<td class="dayoftheweek">M</td>
+		<td class="dayoftheweek">T</td>
+		<td class="dayoftheweek">W</td>
+		<td class="dayoftheweek">T</td>
+		<td class="dayoftheweek">F</td>
+		<td class="dayoftheweek">S</td>
+	</tr>
+
+<% count = 0 %>
+
+	<% (@day.beginning_of_month.beginning_of_week..@day.end_of_month.end_of_week).each do |day| %>
+		<% if day.monday? %>
+			<tr>
+
+			</tr>
+		<% end %>
+
+		<td class="day">
+			<%= link_to day.day, diary_entries_path(day: day) %>
+
+			<% entry_dates = @diary_entry_check.map { |d| d[:date] } %>
+
+			<% if entry_dates.include?(day) %>
+					<p>&#x2713;<p>
+
+				<% @diary_entry_check.each do |d| %>
+					<!--
+					<% if d[:date] == day %>
+						<%= raw('&#9786;') if d[:mood] == 'happy' %>
+						<%= raw('&#9785;') if d[:mood] == 'sad' %>		
+
+					<% end %>
+					-->
+
+				<% end %>
+
+			<% end %>
+
+		</td>
+
+	<% end %>
+
+</table>
+
+
+<ul class="pagination pagination-small pagination-centered">
+	<%= link_to raw('&#8592;'), diary_entries_path(day: @day - 1.month) %>
+	<%= link_to raw('&#8594;'), diary_entries_path(day: @day + 1.month) %>
+</ul>

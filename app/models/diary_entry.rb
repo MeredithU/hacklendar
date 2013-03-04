@@ -3,7 +3,7 @@ class DiaryEntry < ActiveRecord::Base
 
 	validates :title, :presence => true, :uniqueness => true
   validates :description, :presence => true
-  validates :mood, :inclusion => { :in => %w(happy excited) }
+  #validates :mood, :inclusion => { :in => %w(happy excited) }
 
   validate :mondaythursday
 
