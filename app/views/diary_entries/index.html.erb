@@ -13,10 +13,10 @@
   <div class="span7 offset1">
 
     <%= render "calendar" %>
-  
+
   </div>
 
-  <div class="span3"> 
+  <div class="span3">
     <!-- create and populate the table with all diary entries -->
     <div class="hero-unit">
       <% @diary_entries.each do |d| %>
@@ -26,21 +26,40 @@
         <% if (!d.created_at.blank?) %>
           <p><%= d.title %></p>
           <p><%= d.description %></p>
-        <% else %>  
+        <% else %>
             <p>Sorry! You didn't put in an entry for today.<p>
         <% end %>
       <% end %>
     </div>
 
-  <p>
-  
-    <button class="btn btn-primary" type="button">New Entry<% link_to new_diary_entry_path %></button>
 
-  </p>
+    <!-- Adding new diary entry button -->
+    <%= link_to new_diary_entry_path do %>
+      <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">New Entry</button>
+    <% end %>
 
+
+    <!-- Modal for New Entry -->
+    <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">New Calendar Entry</h3>
+      </div>
+
+      <div class="modal-body">
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary">Save changes</button>
+      </div>
+
+    </div>
   </div>
-
-</div>  
+</div>
 
 
 
@@ -64,7 +83,7 @@
 <% count = 0 %>
 
 <% (@day.beginning_of_month..@day.end_of_month).each do |day| %>
-  
+
   <% if entry_dates.include?(day) %>
     <% count += 1 %>
   <% else %>
@@ -77,58 +96,12 @@
 <!--<%= streak_counts.max %>-->
 
 
-<!-- fluid grid -->
-<!--
-  <div class="row-fluid">
-
-    <div class="span4">
-      <h2>Title One</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
-    </div>
-
-    <div class="span4">
-      <h2>Title Two</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
-    </div>
-
-    <div class="span4">
-      <h2>Title Three</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam imperdiet neque sed urna ullamcorper posuere. Phasellus at risus massa. Nulla cursus, justo sed gravida rhoncus, ante leo euismod dui, adipiscing iaculis libero lorem quis tellus. Pellentesque vestibulum lobortis leo, at mollis mauris fringilla non. </p>
-    </div>    
-  </div> -->
 
 
-
-<!-- navbar -->
-<!--
-<div class="navbar navbar-inverse navbar-fixed-top">
-  <div class="navbar-inner">
-    <ul class="nav">
-
-      <a class="brand" href="./diary_entries.html">Mer's Space Jam</a>
-      <li class="<%= 'active' if current_page?(diary_entries_path) %>"><%= link_to "Home", diary_entries_path %></li>
-      <li class="<%= 'active' if current_page?(new_diary_entry_path) %>"><%= link_to "New Entry", new_diary_entry_path %></li>
-    </ul>
-  </div>
-</div>-->
-
-
-
-<!--
-<ul class="pager">
-      <li><%= link_to "Previous Month", diary_entries_path(day: @day - 1.month) %></li>
-      <li><%= link_to "Next Month", diary_entries_path(day: @day + 1.month) %></li>
-</ul>
--->
-
-<!--
-<%= link_to "Previous Day", diary_entries_path(day: @day - 1.day) %>
-<%= link_to "Next Day", diary_entries_path(day: @day + 1.day) %>
--->
 
   <!-- Carousel -->
   <!--<div id="#homepagecarousel" class="carousel slide">-->
-  <!-- Carousel Items --> 
+  <!-- Carousel Items -->
     <!--<div class="carousel-inner">
       <div class="active item">
         <%= image_tag 'wallpaper1919x772' %>
@@ -161,6 +134,10 @@
 
 
 <%= javascript_include_tag "application" %>
+
+<script>
+  $('#myModal').modal();
+</script>
 
 <script>
   $(document).ready(function(){
